@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+    redis01:
+        image: redis:4.0.14
+        container_name: redis01
+        command:
+            - /usr/local/bin/redis-server
+            - /data/redis.conf
+        ports:
+            - 6379:6379
+        volumes:
+            - ./data/redis01/data:/var/lib/redis
+            - ./data/redis01/redis.conf:/data/redis.conf
+    redis02:
+        image: redis:4.0.14
+        container_name: redis02
+        command:
+            - /usr/local/bin/redis-server
+            - /data/redis.conf
+        ports:
+            - 6380:6379
+        volumes:
+            - ./data/redis02/data:/var/lib/redis
+            - ./data/redis02/redis.conf:/data/redis.conf
+    redis03:
+        image: redis:4.0.14
+        container_name: redis03
+        command:
+            - /usr/local/bin/redis-server
+            - /data/redis.conf
+        ports:
+            - 6381:6379
+        volumes:
+            - ./data/redis03/data:/var/lib/redis
+            - ./data/redis03/redis.conf:/data/redis.conf

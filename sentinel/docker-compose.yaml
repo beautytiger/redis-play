@@ -1,0 +1,69 @@
+version: '2'
+
+services:
+    redis01:
+        image: redis:4.0.14
+        container_name: redis01
+        command:
+            - /usr/local/bin/redis-server
+            - /data/redis.conf
+        ports:
+            - 6379:6379
+        volumes:
+            - ./data/redis01/data:/var/lib/redis
+            - ./data/redis01/redis.conf:/data/redis.conf
+    redis02:
+        image: redis:4.0.14
+        container_name: redis02
+        command:
+            - /usr/local/bin/redis-server
+            - /data/redis.conf
+        ports:
+            - 6380:6379
+        volumes:
+            - ./data/redis02/data:/var/lib/redis
+            - ./data/redis02/redis.conf:/data/redis.conf
+    redis03:
+        image: redis:4.0.14
+        container_name: redis03
+        command:
+            - /usr/local/bin/redis-server
+            - /data/redis.conf
+        ports:
+            - 6381:6379
+        volumes:
+            - ./data/redis03/data:/var/lib/redis
+            - ./data/redis03/redis.conf:/data/redis.conf
+    sentinel01:
+        image: redis:4.0.14
+        container_name: sentinel01
+        command:
+            - /usr/local/bin/redis-sentinel
+            - /data/redis.conf
+        ports:
+            - 26379:26379
+        volumes:
+            - ./data/sentinel01/data:/var/lib/redis
+            - ./data/sentinel01/redis.conf:/data/redis.conf
+    sentinel02:
+        image: redis:4.0.14
+        container_name: sentinel02
+        command:
+            - /usr/local/bin/redis-sentinel
+            - /data/redis.conf
+        ports:
+            - 26380:26379
+        volumes:
+            - ./data/sentinel02/data:/var/lib/redis
+            - ./data/sentinel02/redis.conf:/data/redis.conf
+    sentinel03:
+        image: redis:4.0.14
+        container_name: sentinel03
+        command:
+            - /usr/local/bin/redis-sentinel
+            - /data/redis.conf
+        ports:
+            - 26381:26379
+        volumes:
+            - ./data/sentinel03/data:/var/lib/redis
+            - ./data/sentinel03/redis.conf:/data/redis.conf
