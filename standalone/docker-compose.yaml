@@ -1,9 +1,14 @@
-version: '2'
+version: '3'
 
 services:
     redis01:
         image: redis:4.0.14
         container_name: redis01
+        # https://docs.docker.com/compose/compose-file/#sysctls
+        sysctls:
+            - net.core.somaxconn=4096
+            # OCI runtime create failed: sysctl "vm.overcommit_memory" is not in a separate kernel namespace: unknown
+            # - vm.overcommit_memory=1
         command:
             - /usr/local/bin/redis-server
             - /data/redis.conf
